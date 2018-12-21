@@ -1,0 +1,23 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+buildreq-kde
+flex
+bison
+geos-dev
+expat-dev
+libzip-dev
+sqlite-autoconf-dev
+postgresql-dev
+qca-qt5-dev
+sip
+sip-dev
+PyQt5
+qscintilla-dev
+qscintilla
+grass-dev
+python3-dev
+proj-dev
+qtkeychain-dev
+qwt-dev
+libspatialindex-dev
+libspatialite-dev
