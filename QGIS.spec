@@ -4,10 +4,10 @@
 #
 Name     : QGIS
 Version  : 3.4.2
-Release  : 1
+Release  : 2
 URL      : https://github.com/qgis/QGIS/archive/final-3_4_2.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_4_2.tar.gz
-Summary  : No detailed summary available
+Summary  : Geographic Information System (GIS) that supports vector, raster & database formats
 Group    : Development/Tools
 License  : Apache-1.1 BSD-2-Clause BSD-3-Clause BSL-1.0 CC-BY-SA-3.0 GPL-2.0 HPND ISC MIT
 Requires: QGIS-bin = %{version}-%{release}
@@ -19,7 +19,6 @@ Requires: PyYAML
 Requires: Pygments
 Requires: numpy
 Requires: psycopg2
-Requires: python-mock
 Requires: termcolor
 BuildRequires : PyQt5
 BuildRequires : beignet-dev
@@ -56,9 +55,39 @@ BuildRequires : sqlite-autoconf-dev
 BuildRequires : zlib-dev
 
 %description
-Time measurement
-------------------
-For usable benchmarking we need a precise, reliable and repeatable time measurement. It seems to be easy? We are on computer right? Unfortunetly I found it almost impossible! Hopefully I am totaly wrong.
+PLUGIN METADATA TAGS
+=======================================================
+id                  the key; C++ library base name or Python module name
+plugin_id           for the official repository: an integer id. At the time, used for voting only.
+name                human readable plugin name
+description         short description of the plugin purpose only
+about               longer description: how does it work, where does it install, how to run it?
+category            isn't it depreciated?
+tags                comma separated, spaces allowed
+changelog           may be multiline
+author_name         author name
+author_email        author email
+homepage            url to the plugin homepage
+tracker             url to a tracker site
+code_repository     url to the source code repository
+version_installed   installed instance version
+library             absolute path to the installed library / Python module
+icon                path to the first of (INSTALLED | AVAILABLE) icon
+pythonic            true | false (is plugin pythonic or cpp?)
+readonly            true | false (is core plugin?)
+installed           true | false
+available           true | false
+status              not installed | new    |   upgradeable | orphan | downgradeable *
+error               NULL | broken | incompatible | dependent
+error_details       error description
+experimental        true if experimental, false if stable
+version_available   available version
+zip_repository      the remote repository id
+download_url        url for downloading the plugin
+filename            the zip file name to be unzipped after downloaded
+downloads           number of downloads
+average_vote        average vote
+rating_votes        number of votes
 
 %package bin
 Summary: bin components for the QGIS package.
@@ -116,7 +145,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545369390
+export SOURCE_DATE_EPOCH=1549156676
 mkdir -p clr-build
 pushd clr-build
 %cmake .. -DWITH_QTWEBKIT=FALSE -DWITH_QSCIAPI=FALSE
@@ -124,7 +153,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1545369390
+export SOURCE_DATE_EPOCH=1549156676
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp COPYING %{buildroot}/usr/share/package-licenses/QGIS/COPYING
@@ -136,12 +165,13 @@ cp external/kdbush/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/external
 cp external/o2/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/external_o2_LICENSE
 cp external/opencl-clhpp/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/external_opencl-clhpp_LICENSE.txt
 cp external/wintoast/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/external_wintoast_LICENSE.txt
-cp python/plugins/db_manager/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/python_plugins_db_manager_LICENSE
 cp resources/cpt-city-qgis-min/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_cb_COPYING.xml
 cp resources/cpt-city-qgis-min/gist/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_gist_COPYING.xml
 cp resources/cpt-city-qgis-min/h5/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_h5_COPYING.xml
 cp resources/cpt-city-qgis-min/wkp/country/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_country_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/knutux/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_knutux_COPYING.xml
 cp resources/cpt-city-qgis-min/wkp/plumbago/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_plumbago_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/precip/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_precip_COPYING.xml
 cp src/auth/oauth2/qjsonwrapper/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/src_auth_oauth2_qjsonwrapper_LICENSE
 cp tests/testdata/cpt-city/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/tests_testdata_cpt-city_cb_COPYING.xml
 pushd clr-build
@@ -4320,11 +4350,12 @@ popd
 /usr/share/package-licenses/QGIS/external_o2_LICENSE
 /usr/share/package-licenses/QGIS/external_opencl-clhpp_LICENSE.txt
 /usr/share/package-licenses/QGIS/external_wintoast_LICENSE.txt
-/usr/share/package-licenses/QGIS/python_plugins_db_manager_LICENSE
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_cb_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_gist_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_h5_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_country_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_knutux_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_plumbago_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_precip_COPYING.xml
 /usr/share/package-licenses/QGIS/src_auth_oauth2_qjsonwrapper_LICENSE
 /usr/share/package-licenses/QGIS/tests_testdata_cpt-city_cb_COPYING.xml
