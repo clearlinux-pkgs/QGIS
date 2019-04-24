@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.4.2
-Release  : 3
+Release  : 4
 URL      : https://github.com/qgis/QGIS/archive/final-3_4_2.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_4_2.tar.gz
 Summary  : Geographic Information System (GIS) that supports vector, raster & database formats
