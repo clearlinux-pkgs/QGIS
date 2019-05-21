@@ -4,21 +4,23 @@
 #
 Name     : QGIS
 Version  : 3.4.2
-Release  : 4
+Release  : 5
 URL      : https://github.com/qgis/QGIS/archive/final-3_4_2.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_4_2.tar.gz
-Summary  : Geographic Information System (GIS) that supports vector, raster & database formats
+Summary  : No detailed summary available
 Group    : Development/Tools
-License  : Apache-1.1 BSD-2-Clause BSD-3-Clause BSL-1.0 CC-BY-SA-3.0 GPL-2.0 HPND ISC MIT
+License  : Apache-1.1 Apache-2.0 BSD-2-Clause BSD-3-Clause BSL-1.0 CC-BY-SA-3.0 GFDL-1.1 GPL-2.0 HPND ISC LGPL-2.1 MIT
 Requires: QGIS-bin = %{version}-%{release}
 Requires: QGIS-data = %{version}-%{release}
 Requires: QGIS-lib = %{version}-%{release}
 Requires: QGIS-license = %{version}-%{release}
 Requires: Jinja2
+Requires: PyQt5
 Requires: PyYAML
 Requires: Pygments
 Requires: numpy
 Requires: psycopg2
+Requires: sip
 Requires: termcolor
 BuildRequires : PyQt5
 BuildRequires : beignet-dev
@@ -55,39 +57,9 @@ BuildRequires : sqlite-autoconf-dev
 BuildRequires : zlib-dev
 
 %description
-PLUGIN METADATA TAGS
-=======================================================
-id                  the key; C++ library base name or Python module name
-plugin_id           for the official repository: an integer id. At the time, used for voting only.
-name                human readable plugin name
-description         short description of the plugin purpose only
-about               longer description: how does it work, where does it install, how to run it?
-category            isn't it depreciated?
-tags                comma separated, spaces allowed
-changelog           may be multiline
-author_name         author name
-author_email        author email
-homepage            url to the plugin homepage
-tracker             url to a tracker site
-code_repository     url to the source code repository
-version_installed   installed instance version
-library             absolute path to the installed library / Python module
-icon                path to the first of (INSTALLED | AVAILABLE) icon
-pythonic            true | false (is plugin pythonic or cpp?)
-readonly            true | false (is core plugin?)
-installed           true | false
-available           true | false
-status              not installed | new    |   upgradeable | orphan | downgradeable *
-error               NULL | broken | incompatible | dependent
-error_details       error description
-experimental        true if experimental, false if stable
-version_available   available version
-zip_repository      the remote repository id
-download_url        url for downloading the plugin
-filename            the zip file name to be unzipped after downloaded
-downloads           number of downloads
-average_vote        average vote
-rating_votes        number of votes
+QOCISPATIAL driver derived from QOCI driver.
+You will need the Oracle development headers and libraries installed
+before compiling this plugin.
 
 %package bin
 Summary: bin components for the QGIS package.
@@ -114,6 +86,7 @@ Requires: QGIS-lib = %{version}-%{release}
 Requires: QGIS-bin = %{version}-%{release}
 Requires: QGIS-data = %{version}-%{release}
 Provides: QGIS-devel = %{version}-%{release}
+Requires: QGIS = %{version}-%{release}
 
 %description dev
 dev components for the QGIS package.
@@ -145,15 +118,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549156676
+export SOURCE_DATE_EPOCH=1558476595
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake .. -DWITH_QTWEBKIT=FALSE -DWITH_QSCIAPI=FALSE
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549156676
+export SOURCE_DATE_EPOCH=1558476595
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp COPYING %{buildroot}/usr/share/package-licenses/QGIS/COPYING
@@ -165,13 +140,34 @@ cp external/kdbush/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/external
 cp external/o2/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/external_o2_LICENSE
 cp external/opencl-clhpp/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/external_opencl-clhpp_LICENSE.txt
 cp external/wintoast/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/external_wintoast_LICENSE.txt
+cp images/themes/default/LICENSE.TXT %{buildroot}/usr/share/package-licenses/QGIS/images_themes_default_LICENSE.TXT
+cp ms-windows/Installer-Files/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/ms-windows_Installer-Files_LICENSE.txt
+cp python/plugins/MetaSearch/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/python_plugins_MetaSearch_LICENSE.txt
+cp python/plugins/db_manager/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/python_plugins_db_manager_LICENSE
+cp python/plugins/processing/algs/qgis/COPYING.fTools %{buildroot}/usr/share/package-licenses/QGIS/python_plugins_processing_algs_qgis_COPYING.fTools
+cp python/plugins/processing/algs/qgis/COPYING.mmqgis %{buildroot}/usr/share/package-licenses/QGIS/python_plugins_processing_algs_qgis_COPYING.mmqgis
 cp resources/cpt-city-qgis-min/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_cb_COPYING.xml
+cp resources/cpt-city-qgis-min/ds9/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_ds9_COPYING.xml
 cp resources/cpt-city-qgis-min/gist/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_gist_COPYING.xml
+cp resources/cpt-city-qgis-min/gps/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_gps_COPYING.xml
+cp resources/cpt-city-qgis-min/grass/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_grass_COPYING.xml
 cp resources/cpt-city-qgis-min/h5/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_h5_COPYING.xml
+cp resources/cpt-city-qgis-min/jjg/cbac/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_jjg_cbac_COPYING.xml
+cp resources/cpt-city-qgis-min/jjg/cbcont/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_jjg_cbcont_COPYING.xml
+cp resources/cpt-city-qgis-min/jjg/polarity/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_jjg_polarity_COPYING.xml
+cp resources/cpt-city-qgis-min/mby/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_mby_COPYING.xml
+cp resources/cpt-city-qgis-min/nd/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_nd_COPYING.xml
 cp resources/cpt-city-qgis-min/wkp/country/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_country_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/ice/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_ice_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/jarke/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_jarke_COPYING.xml
 cp resources/cpt-city-qgis-min/wkp/knutux/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_knutux_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/lilleskut/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_lilleskut_COPYING.xml
 cp resources/cpt-city-qgis-min/wkp/plumbago/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_plumbago_COPYING.xml
 cp resources/cpt-city-qgis-min/wkp/precip/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_precip_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/schwarzwald/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_schwarzwald_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/shadowxfox/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_shadowxfox_COPYING.xml
+cp resources/cpt-city-qgis-min/wkp/tubs/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_tubs_COPYING.xml
+cp scripts/licenses %{buildroot}/usr/share/package-licenses/QGIS/scripts_licenses
 cp src/auth/oauth2/qjsonwrapper/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/src_auth_oauth2_qjsonwrapper_LICENSE
 cp tests/testdata/cpt-city/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/tests_testdata_cpt-city_cb_COPYING.xml
 pushd clr-build
@@ -4350,12 +4346,33 @@ popd
 /usr/share/package-licenses/QGIS/external_o2_LICENSE
 /usr/share/package-licenses/QGIS/external_opencl-clhpp_LICENSE.txt
 /usr/share/package-licenses/QGIS/external_wintoast_LICENSE.txt
+/usr/share/package-licenses/QGIS/images_themes_default_LICENSE.TXT
+/usr/share/package-licenses/QGIS/ms-windows_Installer-Files_LICENSE.txt
+/usr/share/package-licenses/QGIS/python_plugins_MetaSearch_LICENSE.txt
+/usr/share/package-licenses/QGIS/python_plugins_db_manager_LICENSE
+/usr/share/package-licenses/QGIS/python_plugins_processing_algs_qgis_COPYING.fTools
+/usr/share/package-licenses/QGIS/python_plugins_processing_algs_qgis_COPYING.mmqgis
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_cb_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_ds9_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_gist_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_gps_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_grass_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_h5_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_jjg_cbac_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_jjg_cbcont_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_jjg_polarity_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_mby_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_nd_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_country_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_ice_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_jarke_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_knutux_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_lilleskut_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_plumbago_COPYING.xml
 /usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_precip_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_schwarzwald_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_shadowxfox_COPYING.xml
+/usr/share/package-licenses/QGIS/resources_cpt-city-qgis-min_wkp_tubs_COPYING.xml
+/usr/share/package-licenses/QGIS/scripts_licenses
 /usr/share/package-licenses/QGIS/src_auth_oauth2_qjsonwrapper_LICENSE
 /usr/share/package-licenses/QGIS/tests_testdata_cpt-city_cb_COPYING.xml
