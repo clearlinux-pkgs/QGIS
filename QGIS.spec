@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.6.3
-Release  : 6
+Release  : 7
 URL      : https://github.com/qgis/QGIS/archive/final-3_6_3.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_6_3.tar.gz
 Summary  : Geographic Information System (GIS) that supports vector, raster & database formats
