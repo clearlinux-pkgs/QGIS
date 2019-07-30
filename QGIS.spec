@@ -4,10 +4,10 @@
 #
 Name     : QGIS
 Version  : 3.8.0
-Release  : 9
+Release  : 10
 URL      : https://github.com/qgis/QGIS/archive/final-3_8_0.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_8_0.tar.gz
-Summary  : Geographic Information System (GIS) that supports vector, raster & database formats
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-1.1 Apache-2.0 BSD-2-Clause BSD-3-Clause BSL-1.0 CC-BY-SA-3.0 GFDL-1.1 GPL-2.0 HPND ISC LGPL-2.1 MIT
 Requires: QGIS-bin = %{version}-%{release}
@@ -28,7 +28,6 @@ Requires: termcolor
 BuildRequires : PyQt5
 BuildRequires : PyYAML
 BuildRequires : Sphinx
-BuildRequires : beignet-dev
 BuildRequires : bison
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
@@ -48,6 +47,7 @@ BuildRequires : libxml2-dev
 BuildRequires : libzip-dev
 BuildRequires : numpy
 BuildRequires : ocl-icd-dev
+BuildRequires : opencl-headers-dev
 BuildRequires : pep8
 BuildRequires : pexpect
 BuildRequires : pkg-config
@@ -69,41 +69,13 @@ BuildRequires : sip-dev
 BuildRequires : six
 BuildRequires : sqlite-autoconf-dev
 BuildRequires : termcolor
+BuildRequires : zlib-dev
 
 %description
-PLUGIN METADATA TAGS
-=======================================================
-id                  the key; C++ library base name or Python module name
-plugin_id           for the official repository: an integer id. At the time, used for voting only.
-name                human readable plugin name
-description         short description of the plugin purpose only
-about               longer description: how does it work, where does it install, how to run it?
-category            isn't it depreciated?
-tags                comma separated, spaces allowed
-changelog           may be multiline
-author_name         author name
-author_email        author email
-homepage            url to the plugin homepage
-tracker             url to a tracker site
-code_repository     url to the source code repository
-version_installed   installed instance version
-library             absolute path to the installed library / Python module
-icon                path to the first of (INSTALLED | AVAILABLE) icon
-pythonic            true | false (is plugin pythonic or cpp?)
-readonly            true | false (is core plugin?)
-installed           true | false
-available           true | false
-status              not installed | new    |   upgradeable | orphan | downgradeable *
-error               NULL | broken | incompatible | dependent
-error_details       error description
-experimental        true if experimental, false if stable
-version_available   available version
-zip_repository      the remote repository id
-download_url        url for downloading the plugin
-filename            the zip file name to be unzipped after downloaded
-downloads           number of downloads
-average_vote        average vote
-rating_votes        number of votes
+Updating the srs.db
+-------------------
+The srs.db can be updated from the EPSG codes in the
+GDAL installation:
 
 %package bin
 Summary: bin components for the QGIS package.
@@ -130,7 +102,6 @@ Requires: QGIS-lib = %{version}-%{release}
 Requires: QGIS-bin = %{version}-%{release}
 Requires: QGIS-data = %{version}-%{release}
 Provides: QGIS-devel = %{version}-%{release}
-Requires: QGIS = %{version}-%{release}
 Requires: QGIS = %{version}-%{release}
 
 %description dev
@@ -163,7 +134,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563127567
+export SOURCE_DATE_EPOCH=1564516233
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -176,17 +147,19 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1563127567
+export SOURCE_DATE_EPOCH=1564516233
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp COPYING %{buildroot}/usr/share/package-licenses/QGIS/COPYING
 cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/QGIS/cmake_COPYING-CMAKE-SCRIPTS
 cp cmake/modules/coverage/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/QGIS/cmake_modules_coverage_LICENSE_1_0.txt
+cp debian/copyright %{buildroot}/usr/share/package-licenses/QGIS/debian_copyright
 cp doc/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/doc_LICENSE
 cp external/astyle/LICENSE.md %{buildroot}/usr/share/package-licenses/QGIS/external_astyle_LICENSE.md
 cp external/kdbush/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/external_kdbush_LICENSE
 cp external/o2/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/external_o2_LICENSE
 cp external/opencl-clhpp/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/external_opencl-clhpp_LICENSE.txt
+cp external/qt-unix-signals/LICENCE %{buildroot}/usr/share/package-licenses/QGIS/external_qt-unix-signals_LICENCE
 cp external/wintoast/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/external_wintoast_LICENSE.txt
 cp images/themes/default/LICENSE.TXT %{buildroot}/usr/share/package-licenses/QGIS/images_themes_default_LICENSE.TXT
 cp ms-windows/Installer-Files/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/ms-windows_Installer-Files_LICENSE.txt
@@ -4491,11 +4464,13 @@ popd
 /usr/share/package-licenses/QGIS/COPYING
 /usr/share/package-licenses/QGIS/cmake_COPYING-CMAKE-SCRIPTS
 /usr/share/package-licenses/QGIS/cmake_modules_coverage_LICENSE_1_0.txt
+/usr/share/package-licenses/QGIS/debian_copyright
 /usr/share/package-licenses/QGIS/doc_LICENSE
 /usr/share/package-licenses/QGIS/external_astyle_LICENSE.md
 /usr/share/package-licenses/QGIS/external_kdbush_LICENSE
 /usr/share/package-licenses/QGIS/external_o2_LICENSE
 /usr/share/package-licenses/QGIS/external_opencl-clhpp_LICENSE.txt
+/usr/share/package-licenses/QGIS/external_qt-unix-signals_LICENCE
 /usr/share/package-licenses/QGIS/external_wintoast_LICENSE.txt
 /usr/share/package-licenses/QGIS/images_themes_default_LICENSE.TXT
 /usr/share/package-licenses/QGIS/ms-windows_Installer-Files_LICENSE.txt

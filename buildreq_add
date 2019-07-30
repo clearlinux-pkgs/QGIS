@@ -21,3 +21,4 @@ qtkeychain-dev
 qwt-dev
 libspatialindex-dev
 libspatialite-dev
+opencl-headers-dev
