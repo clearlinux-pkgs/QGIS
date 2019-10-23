@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.8.3
-Release  : 14
+Release  : 15
 URL      : https://github.com/qgis/QGIS/archive/final-3_8_3.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_8_3.tar.gz
 Summary  : No detailed summary available
