@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.10.0
-Release  : 19
+Release  : 20
 URL      : https://github.com/qgis/QGIS/archive/final-3_10_0/QGIS-3.10.0.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_10_0/QGIS-3.10.0.tar.gz
 Summary  : Geographic Information System (GIS) that supports vector, raster & database formats
