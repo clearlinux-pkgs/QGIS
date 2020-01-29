@@ -27,7 +27,7 @@ libgrass_gproj.7.6.so
 libgrass_imagery.7.6.so
 libgrass_raster.7.6.so
 libgrass_vector.7.6.so
-libgsl.so.23
+libgsl.so.25
 libgslcblas.so.0
 libhdf5.so.103
 libm.so.6
@@ -35,7 +35,7 @@ libnetcdf.so.15
 libpq.so.5
 libproj.so.15
 libpthread.so.0
-libpython3.7m.so.1.0
+libpython3.8.so.1.0
 libqca-qt5.so.2
 libqscintilla2_qt5.so.13
 libqt5keychain.so.1
