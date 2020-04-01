@@ -4,10 +4,10 @@
 #
 Name     : QGIS
 Version  : 3.10.2
-Release  : 22
+Release  : 23
 URL      : https://github.com/qgis/QGIS/archive/final-3_10_2/QGIS-3.10.2.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_10_2/QGIS-3.10.2.tar.gz
-Summary  : Geographic Information System (GIS) that supports vector, raster & database formats
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-1.1 Apache-2.0 BSD-2-Clause BSD-3-Clause BSL-1.0 CC-BY-SA-3.0 GFDL-1.1 GPL-2.0 HPND ISC LGPL-2.1 MIT
 Requires: QGIS-bin = %{version}-%{release}
@@ -17,6 +17,7 @@ Requires: QGIS-license = %{version}-%{release}
 Requires: PyQt5
 Requires: PyYAML
 Requires: Sphinx
+Requires: capturer
 Requires: numpy
 Requires: pep8
 Requires: pexpect
@@ -32,6 +33,7 @@ BuildRequires : bison
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : buildreq-qmake
+BuildRequires : capturer
 BuildRequires : doxygen
 BuildRequires : exiv2-dev
 BuildRequires : expat-dev
@@ -71,8 +73,9 @@ BuildRequires : sqlite-autoconf-dev
 BuildRequires : termcolor
 
 %description
-This was originally taken from http://nmea.sourceforge.net, which is now dead.
-A fork is alive and well at https://gitlab.com/fhuberts/nmealib, however in the meantime we've diverged considerably and pulling in the changes from the fork is not trivial. Still, the new upstream makes a good reference when working here or checking on bugs!
+QOCISPATIAL driver derived from QOCI driver.
+You will need the Oracle development headers and libraries installed
+before compiling this plugin.
 
 %package bin
 Summary: bin components for the QGIS package.
@@ -99,7 +102,6 @@ Requires: QGIS-lib = %{version}-%{release}
 Requires: QGIS-bin = %{version}-%{release}
 Requires: QGIS-data = %{version}-%{release}
 Provides: QGIS-devel = %{version}-%{release}
-Requires: QGIS = %{version}-%{release}
 Requires: QGIS = %{version}-%{release}
 
 %description dev
@@ -133,10 +135,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580319880
+export SOURCE_DATE_EPOCH=1585709026
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -147,12 +148,13 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1580319880
+export SOURCE_DATE_EPOCH=1585709026
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/QGIS-final-3_10_2/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f
 cp %{_builddir}/QGIS-final-3_10_2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/QGIS/ff3ed70db4739b3c6747c7f624fe2bad70802987
 cp %{_builddir}/QGIS-final-3_10_2/cmake/modules/coverage/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/QGIS/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+cp %{_builddir}/QGIS-final-3_10_2/debian/copyright %{buildroot}/usr/share/package-licenses/QGIS/cb7ab6f860b717c3f18b567138c4e19fd857de44
 cp %{_builddir}/QGIS-final-3_10_2/doc/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f
 cp %{_builddir}/QGIS-final-3_10_2/external/astyle/LICENSE.md %{buildroot}/usr/share/package-licenses/QGIS/3ad29cc31a206b0662eb91917964b82f11b3df16
 cp %{_builddir}/QGIS-final-3_10_2/external/kdbush/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/2402d654960118ffda4e8cd9db4d05531f5ceaae
@@ -5633,6 +5635,7 @@ popd
 /usr/share/package-licenses/QGIS/bdd534db9064c2a6c5631f4b56000adffbf350f6
 /usr/share/package-licenses/QGIS/c6e924d70ec1fba325b7428f9641e14923ce2388
 /usr/share/package-licenses/QGIS/c9b7c4d46f0a3548dd20903670b0565907dfd71b
+/usr/share/package-licenses/QGIS/cb7ab6f860b717c3f18b567138c4e19fd857de44
 /usr/share/package-licenses/QGIS/d47102619d6761c7af358f28dd9f1fda4fdce557
 /usr/share/package-licenses/QGIS/d534387ae0798cdf48df5c4fea5768c317b996b3
 /usr/share/package-licenses/QGIS/dd24faa0601d0525441d1171648b02cd24b72362
