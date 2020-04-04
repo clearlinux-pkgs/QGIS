@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.10.2
-Release  : 23
+Release  : 24
 URL      : https://github.com/qgis/QGIS/archive/final-3_10_2/QGIS-3.10.2.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_10_2/QGIS-3.10.2.tar.gz
 Summary  : No detailed summary available
