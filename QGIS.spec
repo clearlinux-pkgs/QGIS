@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.10.2
-Release  : 24
+Release  : 25
 URL      : https://github.com/qgis/QGIS/archive/final-3_10_2/QGIS-3.10.2.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_10_2/QGIS-3.10.2.tar.gz
 Summary  : No detailed summary available
@@ -62,8 +62,16 @@ BuildRequires : python3-dev
 BuildRequires : qca-qt5-dev
 BuildRequires : qscintilla
 BuildRequires : qscintilla-dev
+BuildRequires : qt3d-dev
+BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : qtdeclarative-dev
 BuildRequires : qtkeychain-dev
+BuildRequires : qtlocation-dev
+BuildRequires : qtscript-dev
+BuildRequires : qtserialport-dev
+BuildRequires : qtsvg-dev
+BuildRequires : qttools-dev
 BuildRequires : qwt-dev
 BuildRequires : requests
 BuildRequires : sip
@@ -135,20 +143,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585709026
+export SOURCE_DATE_EPOCH=1588622624
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %cmake .. -DWITH_QTWEBKIT=FALSE -DWITH_QSCIAPI=FALSE
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1585709026
+export SOURCE_DATE_EPOCH=1588622624
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/QGIS-final-3_10_2/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f
