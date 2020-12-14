@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.12.3
-Release  : 28
+Release  : 29
 URL      : https://github.com/qgis/QGIS/archive/final-3_12_3/QGIS-3.12.3.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_12_3/QGIS-3.12.3.tar.gz
 Summary  : No detailed summary available
