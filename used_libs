@@ -15,6 +15,7 @@ libQt5Svg.so.5
 libQt5Widgets.so.5
 libQt5Xml.so.5
 libc.so.6
+libdl.so.2
 libexiv2.so.27
 libexpat.so.1
 libgcc_s.so.1
@@ -34,8 +35,9 @@ libm.so.6
 libnetcdf.so.18
 libpq.so.5
 libproj.so.19
+libprotobuf-lite.so.23
 libpthread.so.0
-libpython3.8.so.1.0
+libpython3.9.so.1.0
 libqca-qt5.so.2
 libqscintilla2_qt5.so.13
 libqt5keychain.so.1
@@ -45,4 +47,6 @@ libspatialite.so.7
 libsqlite3.so.0
 libstdc++.so.6
 libxml2.so.2
+libz.so.1
 libzip.so.5
+libzstd.so.1
