@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.18.0
-Release  : 33
+Release  : 34
 URL      : https://github.com/qgis/QGIS/archive/final-3_18_0/QGIS-3.18.0.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_18_0/QGIS-3.18.0.tar.gz
 Summary  : No detailed summary available
