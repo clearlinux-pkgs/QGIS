@@ -22,3 +22,4 @@ qwt-dev
 sip
 sip-dev
 sqlite-autoconf-dev
+zstd-dev
