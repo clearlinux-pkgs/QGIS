@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.18.3
-Release  : 39
+Release  : 40
 URL      : https://github.com/qgis/QGIS/archive/final-3_18_3/QGIS-3.18.3.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_18_3/QGIS-3.18.3.tar.gz
 Summary  : No detailed summary available
@@ -142,28 +142,21 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1624485833
+export SOURCE_DATE_EPOCH=1637110159
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
 %cmake .. -DWITH_QTWEBKIT=FALSE \
 -DWITH_QSCIAPI=FALSE
 make  %{?_smp_mflags}
 popd
 
-%check
-export LANG=C.UTF-8
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-cd clr-build; make test || :
-
 %install
-export SOURCE_DATE_EPOCH=1624485833
+export SOURCE_DATE_EPOCH=1637110159
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/QGIS-final-3_18_3/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f
