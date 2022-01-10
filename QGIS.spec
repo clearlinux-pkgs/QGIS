@@ -4,7 +4,7 @@
 #
 Name     : QGIS
 Version  : 3.18.3
-Release  : 40
+Release  : 41
 URL      : https://github.com/qgis/QGIS/archive/final-3_18_3/QGIS-3.18.3.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_18_3/QGIS-3.18.3.tar.gz
 Summary  : No detailed summary available
@@ -15,25 +15,12 @@ Requires: QGIS-data = %{version}-%{release}
 Requires: QGIS-lib = %{version}-%{release}
 Requires: QGIS-license = %{version}-%{release}
 Requires: PyQt5
-Requires: PyYAML
-Requires: Sphinx
-Requires: capturer
-Requires: numpy
-Requires: pep8
-Requires: pexpect
-Requires: psycopg2
-Requires: requests
 Requires: sip
-Requires: six
-Requires: termcolor
 BuildRequires : PyQt5
-BuildRequires : PyYAML
-BuildRequires : Sphinx
 BuildRequires : bison
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : buildreq-qmake
-BuildRequires : capturer
 BuildRequires : doxygen
 BuildRequires : exiv2-dev
 BuildRequires : expat-dev
@@ -48,17 +35,25 @@ BuildRequires : libspatialindex-dev
 BuildRequires : libspatialite-dev
 BuildRequires : libxml2-dev
 BuildRequires : libzip-dev
-BuildRequires : numpy
 BuildRequires : ocl-icd-dev
 BuildRequires : opencl-headers-dev
-BuildRequires : pep8
-BuildRequires : pexpect
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(netcdf)
 BuildRequires : postgresql-dev
 BuildRequires : proj-dev
 BuildRequires : protobuf-dev
-BuildRequires : psycopg2
+BuildRequires : pypi(capturer)
+BuildRequires : pypi(future)
+BuildRequires : pypi(mock)
+BuildRequires : pypi(numpy)
+BuildRequires : pypi(pep8)
+BuildRequires : pypi(pexpect)
+BuildRequires : pypi(psycopg2)
+BuildRequires : pypi(pyyaml)
+BuildRequires : pypi(requests)
+BuildRequires : pypi(six)
+BuildRequires : pypi(sphinx)
+BuildRequires : pypi(termcolor)
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : qca-qt5-dev
@@ -70,12 +65,9 @@ BuildRequires : qtkeychain-dev
 BuildRequires : qtscript-dev
 BuildRequires : qttools-dev
 BuildRequires : qwt-dev
-BuildRequires : requests
 BuildRequires : sip
 BuildRequires : sip-dev
-BuildRequires : six
 BuildRequires : sqlite-autoconf-dev
-BuildRequires : termcolor
 BuildRequires : zlib-dev
 BuildRequires : zstd-dev
 
@@ -142,7 +134,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1637110159
+export SOURCE_DATE_EPOCH=1641854143
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -156,7 +148,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1637110159
+export SOURCE_DATE_EPOCH=1641854143
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/QGIS-final-3_18_3/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f
