@@ -1,15 +1,3 @@
-3.18.3
+3.24.1
 exiv2-dev
 ocl-icd-dev
-pypi(capturer)
-pypi(future)
-pypi(mock)
-pypi(numpy)
-pypi(pep8)
-pypi(pexpect)
-pypi(psycopg2)
-pypi(pyyaml)
-pypi(requests)
-pypi(six)
-pypi(sphinx)
-pypi(termcolor)
