@@ -18,7 +18,7 @@ libc.so.6
 libexiv2.so.27
 libexpat.so.1
 libgcc_s.so.1
-libgdal.so.30
+libgdal.so.32
 libgeos_c.so.1
 libgrass_dbmibase.7.6.so
 libgrass_dbmiclient.7.6.so
@@ -27,7 +27,7 @@ libgrass_gproj.7.6.so
 libgrass_imagery.7.6.so
 libgrass_raster.7.6.so
 libgrass_vector.7.6.so
-libgsl.so.25
+libgsl.so.27
 libgslcblas.so.0
 libhdf5.so.103
 libm.so.6
@@ -37,10 +37,10 @@ libproj.so.19
 libprotobuf-lite.so.32
 libpython3.11.so.1.0
 libqca-qt5.so.2
-libqscintilla2_qt5.so.13
+libqscintilla2_qt5.so.15
 libqt5keychain.so.1
-libqwt.so.6
-libspatialindex.so.4
+libqwt.so.6.2
+libspatialindex.so.6
 libspatialite.so.7
 libsqlite3.so.0
 libstdc++.so.6

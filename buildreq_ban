@@ -2,3 +2,4 @@
 # undesirable. One entry per line, no whitespace.
 beignet-dev
 pypi(nose2)
+pypi(pyqt5.qsci)

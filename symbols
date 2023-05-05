@@ -22978,6 +22978,7 @@ libqgis_core.so.3.24.3:_ZNK7QgsGeos8overlapsEPK19QgsAbstractGeometryP7QString
 libqgis_core.so.3.24.3:_ZNK7QgsGeos8relationEPK19QgsAbstractGeometryNS_8RelationEP7QString
 libqgis_core.so.3.24.3:_ZNK7QgsGeos8simplifyEdP7QString
 libqgis_core.so.3.24.3:_ZNK7QgsGeos9cacheGeosEv
+libqgis_core.so.3.24.3:_ZNK7QgsGeos9makeValidEP7QString
 libqgis_core.so.3.24.3:_ZNK7QgsGeos9subdivideEiP7QString
 libqgis_core.so.3.24.3:_ZNK7QgsMesh11vertexCountEv
 libqgis_core.so.3.24.3:_ZNK7QgsMesh4edgeEi
