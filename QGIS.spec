@@ -5,7 +5,7 @@
 #
 Name     : QGIS
 Version  : 3.24.3
-Release  : 54
+Release  : 55
 URL      : https://github.com/qgis/QGIS/archive/final-3_24_3/QGIS-3.24.3.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_24_3/QGIS-3.24.3.tar.gz
 Summary  : No detailed summary available
@@ -43,6 +43,9 @@ BuildRequires : pkgconfig(netcdf)
 BuildRequires : postgresql-dev
 BuildRequires : proj-dev
 BuildRequires : protobuf-dev
+BuildRequires : pypi(pyqt5_sip)
+BuildRequires : pypi(pyqtbuild)
+BuildRequires : pypi(toml)
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : qca-qt5-dev
@@ -55,7 +58,6 @@ BuildRequires : qtkeychain-dev
 BuildRequires : qtscript-dev
 BuildRequires : qwt-dev
 BuildRequires : sip
-BuildRequires : sip-dev
 BuildRequires : sqlite-autoconf-dev
 BuildRequires : zlib-dev
 BuildRequires : zstd-dev
@@ -126,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683321740
+export SOURCE_DATE_EPOCH=1683569161
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -140,7 +142,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1683321740
+export SOURCE_DATE_EPOCH=1683569161
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/QGIS-final-3_24_3/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :

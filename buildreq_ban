@@ -3,3 +3,5 @@
 beignet-dev
 pypi(nose2)
 pypi(pyqt5.qsci)
+pypi(pyqt5.sip)
+pypi(sipconfig)
