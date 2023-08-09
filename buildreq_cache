@@ -1,7 +1,3 @@
-3.24.3
+3.32.0
 exiv2-dev
 ocl-icd-dev
-pypi(pyqt5.qsci)
-pypi(pyqt5.sip)
-pypi(sipconfig)
-pypi(toml)

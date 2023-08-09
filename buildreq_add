@@ -1,11 +1,13 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+PDAL-dev
 PyQt5
 bison
 buildreq-kde
 expat-dev
 flex
 geos-dev
+gpsbabel
 grass-dev
 libspatialindex-dev
 libspatialite-dev
