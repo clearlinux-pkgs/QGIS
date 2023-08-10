@@ -5,7 +5,7 @@
 #
 Name     : QGIS
 Version  : 3.32.1
-Release  : 57
+Release  : 58
 URL      : https://github.com/qgis/QGIS/archive/final-3_32_1/QGIS-3.32.1.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_32_1/QGIS-3.32.1.tar.gz
 Summary  : No detailed summary available
@@ -129,7 +129,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1691683448
+export SOURCE_DATE_EPOCH=1691687172
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -145,7 +145,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1691683448
+export SOURCE_DATE_EPOCH=1691687172
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/QGIS-final-3_32_1/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :
