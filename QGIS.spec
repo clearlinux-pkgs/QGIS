@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : QGIS
-Version  : 3.32.2
-Release  : 59
-URL      : https://github.com/qgis/QGIS/archive/final-3_32_2/QGIS-3.32.2.tar.gz
-Source0  : https://github.com/qgis/QGIS/archive/final-3_32_2/QGIS-3.32.2.tar.gz
+Version  : 3.32.3
+Release  : 60
+URL      : https://github.com/qgis/QGIS/archive/final-3_32_3/QGIS-3.32.3.tar.gz
+Source0  : https://github.com/qgis/QGIS/archive/final-3_32_3/QGIS-3.32.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-1.1 Apache-2.0 BSD-2-Clause BSD-3-Clause BSL-1.0 CC-BY-SA-3.0 GFDL-1.1 GPL-2.0 GPL-3.0 HPND ISC LGPL-2.1 MIT
@@ -121,15 +121,15 @@ license components for the QGIS package.
 
 
 %prep
-%setup -q -n QGIS-final-3_32_2
-cd %{_builddir}/QGIS-final-3_32_2
+%setup -q -n QGIS-final-3_32_3
+cd %{_builddir}/QGIS-final-3_32_3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692377415
+export SOURCE_DATE_EPOCH=1694806996
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -145,55 +145,55 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1692377415
+export SOURCE_DATE_EPOCH=1694806996
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
-cp %{_builddir}/QGIS-final-3_32_2/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :
-cp %{_builddir}/QGIS-final-3_32_2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/QGIS/ff3ed70db4739b3c6747c7f624fe2bad70802987 || :
-cp %{_builddir}/QGIS-final-3_32_2/cmake/modules/coverage/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/QGIS/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90 || :
-cp %{_builddir}/QGIS-final-3_32_2/debian/copyright %{buildroot}/usr/share/package-licenses/QGIS/143a5e62af9603eb536ff2c78f288bb7ee1e397c || :
-cp %{_builddir}/QGIS-final-3_32_2/doc/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :
-cp %{_builddir}/QGIS-final-3_32_2/external/astyle/LICENSE.md %{buildroot}/usr/share/package-licenses/QGIS/3ad29cc31a206b0662eb91917964b82f11b3df16 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/delaunator-cpp/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/66c1d826d59925866c7834224caa1a60af5e9d1b || :
-cp %{_builddir}/QGIS-final-3_32_2/external/kdbush/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/2402d654960118ffda4e8cd9db4d05531f5ceaae || :
-cp %{_builddir}/QGIS-final-3_32_2/external/meshOptimizer/LICENSE.md %{buildroot}/usr/share/package-licenses/QGIS/5ade365fc704c41896f3c59b0951775f10e4a9c7 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/o2/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/bdd534db9064c2a6c5631f4b56000adffbf350f6 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/odbccpp/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/8fae4df6f24eac09d63f857821b2a43c19ab69c3 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/opencl-clhpp/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/a2c2cec27c83c4e80f6a84749a89cab433f36441 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/qjsonwrapper/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/9823cbd29ab4e6db849cc2706fe27818ac755368 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/qt-unix-signals/LICENCE %{buildroot}/usr/share/package-licenses/QGIS/9c3dc94954068a1c7e2c64f833edb86aff3371b5 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/untwine/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/31a3d460bb3c7d98845187c716a30db81c44b615 || :
-cp %{_builddir}/QGIS-final-3_32_2/external/wintoast/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/4398afdd20ed2c52a548feb6f5ab86d63950208d || :
-cp %{_builddir}/QGIS-final-3_32_2/images/themes/default/LICENSE.TXT %{buildroot}/usr/share/package-licenses/QGIS/87f19fda8a9f6a741f17156a66f3b2fc4b44d190 || :
-cp %{_builddir}/QGIS-final-3_32_2/ms-windows/Installer-Files/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/e64abf7b809eeddf0e45e522d9cf4aa859acc6a0 || :
-cp %{_builddir}/QGIS-final-3_32_2/python/plugins/MetaSearch/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/01af1b7bb6a307dd69d86ff4ae776bf83f774410 || :
-cp %{_builddir}/QGIS-final-3_32_2/python/plugins/db_manager/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/994c89301d339d42883a2c894f1fc0ffa22f8310 || :
-cp %{_builddir}/QGIS-final-3_32_2/python/plugins/processing/algs/qgis/COPYING.fTools %{buildroot}/usr/share/package-licenses/QGIS/c9b7c4d46f0a3548dd20903670b0565907dfd71b || :
-cp %{_builddir}/QGIS-final-3_32_2/python/plugins/processing/algs/qgis/COPYING.mmqgis %{buildroot}/usr/share/package-licenses/QGIS/8643f8c862492eee555198d25ae9e74af435867b || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/182c2f2885c7f8c5bd887215a0df7394f698aa9f || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/cmocean/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/7298f063c13b5c20f77aee1c3051ac8defa41a7d || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/ds9/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/3c8fed1a751d48e3a4a8fb3b02f1bd7eeb8c396a || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/gist/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/2bddfad17b791aa7fdb9aff62bd70d057df0fb80 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/gps/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/e486666e4432688bed6b38bbf33731b9eb555c2a || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/grass/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/15327e882a22d86653b3ba1ab1817e8f9f9ea487 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/h5/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/bce18a3bdfa47de9e655a5f51179b8b1fc4976ef || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/mby/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/f8246c94b5883ba455f490496e42246d1c4dadb2 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/ncl/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/bf1ae598c1eeffc1dc3f068bde95f590b42b7ad8 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/nd/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/b56a5aba17d4e38ee7b26319430f9fbc4a9624ad || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/country/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/307e79366164f0410997cf863ae3ab190be5baa4 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/ice/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/42ca672f851500f7f336714a189d8838eb447112 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/jarke/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/4fd625caa2ed25a3899767ae8f4daedd49298dbd || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/knutux/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/dd24faa0601d0525441d1171648b02cd24b72362 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/lilleskut/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/c6e924d70ec1fba325b7428f9641e14923ce2388 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/mars/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/1db6102554d2e5a2fe28a0ed5c25178a8b91ecce || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/plumbago/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/7af8843459108323e1b00a03af8c8c63f543528c || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/precip/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/1db6102554d2e5a2fe28a0ed5c25178a8b91ecce || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/schwarzwald/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/b5282d68e93dcf6e7ca97698c043c44263d6d718 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/shadowxfox/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/0a3ef8858da2f543b9b5339884db029d52c93143 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/cpt-city-qgis-min/wkp/tubs/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/d47102619d6761c7af358f28dd9f1fda4fdce557 || :
-cp %{_builddir}/QGIS-final-3_32_2/resources/server/api/ogc/static/jsonFormatter/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/865434768292c769c99c80c0ef6be3a78a5090f4 || :
-cp %{_builddir}/QGIS-final-3_32_2/scripts/licenses %{buildroot}/usr/share/package-licenses/QGIS/d534387ae0798cdf48df5c4fea5768c317b996b3 || :
-cp %{_builddir}/QGIS-final-3_32_2/tests/testdata/cpt-city/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/a990119dbe9f5679d3d88e283ab6001f4131fc64 || :
+cp %{_builddir}/QGIS-final-3_32_3/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :
+cp %{_builddir}/QGIS-final-3_32_3/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/QGIS/ff3ed70db4739b3c6747c7f624fe2bad70802987 || :
+cp %{_builddir}/QGIS-final-3_32_3/cmake/modules/coverage/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/QGIS/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90 || :
+cp %{_builddir}/QGIS-final-3_32_3/debian/copyright %{buildroot}/usr/share/package-licenses/QGIS/143a5e62af9603eb536ff2c78f288bb7ee1e397c || :
+cp %{_builddir}/QGIS-final-3_32_3/doc/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :
+cp %{_builddir}/QGIS-final-3_32_3/external/astyle/LICENSE.md %{buildroot}/usr/share/package-licenses/QGIS/3ad29cc31a206b0662eb91917964b82f11b3df16 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/delaunator-cpp/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/66c1d826d59925866c7834224caa1a60af5e9d1b || :
+cp %{_builddir}/QGIS-final-3_32_3/external/kdbush/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/2402d654960118ffda4e8cd9db4d05531f5ceaae || :
+cp %{_builddir}/QGIS-final-3_32_3/external/meshOptimizer/LICENSE.md %{buildroot}/usr/share/package-licenses/QGIS/5ade365fc704c41896f3c59b0951775f10e4a9c7 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/o2/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/bdd534db9064c2a6c5631f4b56000adffbf350f6 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/odbccpp/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/8fae4df6f24eac09d63f857821b2a43c19ab69c3 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/opencl-clhpp/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/a2c2cec27c83c4e80f6a84749a89cab433f36441 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/qjsonwrapper/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/9823cbd29ab4e6db849cc2706fe27818ac755368 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/qt-unix-signals/LICENCE %{buildroot}/usr/share/package-licenses/QGIS/9c3dc94954068a1c7e2c64f833edb86aff3371b5 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/untwine/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/31a3d460bb3c7d98845187c716a30db81c44b615 || :
+cp %{_builddir}/QGIS-final-3_32_3/external/wintoast/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/4398afdd20ed2c52a548feb6f5ab86d63950208d || :
+cp %{_builddir}/QGIS-final-3_32_3/images/themes/default/LICENSE.TXT %{buildroot}/usr/share/package-licenses/QGIS/87f19fda8a9f6a741f17156a66f3b2fc4b44d190 || :
+cp %{_builddir}/QGIS-final-3_32_3/ms-windows/Installer-Files/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/e64abf7b809eeddf0e45e522d9cf4aa859acc6a0 || :
+cp %{_builddir}/QGIS-final-3_32_3/python/plugins/MetaSearch/LICENSE.txt %{buildroot}/usr/share/package-licenses/QGIS/01af1b7bb6a307dd69d86ff4ae776bf83f774410 || :
+cp %{_builddir}/QGIS-final-3_32_3/python/plugins/db_manager/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/994c89301d339d42883a2c894f1fc0ffa22f8310 || :
+cp %{_builddir}/QGIS-final-3_32_3/python/plugins/processing/algs/qgis/COPYING.fTools %{buildroot}/usr/share/package-licenses/QGIS/c9b7c4d46f0a3548dd20903670b0565907dfd71b || :
+cp %{_builddir}/QGIS-final-3_32_3/python/plugins/processing/algs/qgis/COPYING.mmqgis %{buildroot}/usr/share/package-licenses/QGIS/8643f8c862492eee555198d25ae9e74af435867b || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/182c2f2885c7f8c5bd887215a0df7394f698aa9f || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/cmocean/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/7298f063c13b5c20f77aee1c3051ac8defa41a7d || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/ds9/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/3c8fed1a751d48e3a4a8fb3b02f1bd7eeb8c396a || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/gist/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/2bddfad17b791aa7fdb9aff62bd70d057df0fb80 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/gps/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/e486666e4432688bed6b38bbf33731b9eb555c2a || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/grass/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/15327e882a22d86653b3ba1ab1817e8f9f9ea487 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/h5/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/bce18a3bdfa47de9e655a5f51179b8b1fc4976ef || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/mby/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/f8246c94b5883ba455f490496e42246d1c4dadb2 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/ncl/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/bf1ae598c1eeffc1dc3f068bde95f590b42b7ad8 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/nd/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/b56a5aba17d4e38ee7b26319430f9fbc4a9624ad || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/country/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/307e79366164f0410997cf863ae3ab190be5baa4 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/ice/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/42ca672f851500f7f336714a189d8838eb447112 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/jarke/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/4fd625caa2ed25a3899767ae8f4daedd49298dbd || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/knutux/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/dd24faa0601d0525441d1171648b02cd24b72362 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/lilleskut/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/c6e924d70ec1fba325b7428f9641e14923ce2388 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/mars/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/1db6102554d2e5a2fe28a0ed5c25178a8b91ecce || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/plumbago/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/7af8843459108323e1b00a03af8c8c63f543528c || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/precip/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/1db6102554d2e5a2fe28a0ed5c25178a8b91ecce || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/schwarzwald/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/b5282d68e93dcf6e7ca97698c043c44263d6d718 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/shadowxfox/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/0a3ef8858da2f543b9b5339884db029d52c93143 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/cpt-city-qgis-min/wkp/tubs/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/d47102619d6761c7af358f28dd9f1fda4fdce557 || :
+cp %{_builddir}/QGIS-final-3_32_3/resources/server/api/ogc/static/jsonFormatter/LICENSE %{buildroot}/usr/share/package-licenses/QGIS/865434768292c769c99c80c0ef6be3a78a5090f4 || :
+cp %{_builddir}/QGIS-final-3_32_3/scripts/licenses %{buildroot}/usr/share/package-licenses/QGIS/d534387ae0798cdf48df5c4fea5768c317b996b3 || :
+cp %{_builddir}/QGIS-final-3_32_3/tests/testdata/cpt-city/cb/COPYING.xml %{buildroot}/usr/share/package-licenses/QGIS/a990119dbe9f5679d3d88e283ab6001f4131fc64 || :
 pushd clr-build
 %make_install
 popd
@@ -10620,14 +10620,14 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libqgis_3d.so.3.32.2
-/usr/lib64/libqgis_analysis.so.3.32.2
-/usr/lib64/libqgis_app.so.3.32.2
-/usr/lib64/libqgis_core.so.3.32.2
-/usr/lib64/libqgis_gui.so.3.32.2
-/usr/lib64/libqgis_native.so.3.32.2
-/usr/lib64/libqgisgrass8.so.3.32.2
-/usr/lib64/libqgispython.so.3.32.2
+/usr/lib64/libqgis_3d.so.3.32.3
+/usr/lib64/libqgis_analysis.so.3.32.3
+/usr/lib64/libqgis_app.so.3.32.3
+/usr/lib64/libqgis_core.so.3.32.3
+/usr/lib64/libqgis_gui.so.3.32.3
+/usr/lib64/libqgis_native.so.3.32.3
+/usr/lib64/libqgisgrass8.so.3.32.3
+/usr/lib64/libqgispython.so.3.32.3
 /usr/lib64/qgis/plugins/libauthmethod_apiheader.so
 /usr/lib64/qgis/plugins/libauthmethod_awss3.so
 /usr/lib64/qgis/plugins/libauthmethod_basic.so
