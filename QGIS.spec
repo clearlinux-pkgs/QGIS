@@ -5,7 +5,7 @@
 #
 Name     : QGIS
 Version  : 3.32.3
-Release  : 60
+Release  : 61
 URL      : https://github.com/qgis/QGIS/archive/final-3_32_3/QGIS-3.32.3.tar.gz
 Source0  : https://github.com/qgis/QGIS/archive/final-3_32_3/QGIS-3.32.3.tar.gz
 Summary  : No detailed summary available
