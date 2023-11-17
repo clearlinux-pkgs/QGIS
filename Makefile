@@ -1,5 +1,5 @@
 PKG_NAME := QGIS
-URL = https://github.com/qgis/QGIS/archive/final-3_32_3/QGIS-3.32.3.tar.gz
+URL = https://download.qgis.org/downloads/qgis-3.34.0.tar.bz2
 ARCHIVES = 
 
 include ../common/Makefile.common
