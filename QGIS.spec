@@ -7,7 +7,7 @@
 #
 Name     : QGIS
 Version  : 3.34.0
-Release  : 62
+Release  : 63
 URL      : https://download.qgis.org/downloads/qgis-3.34.0.tar.bz2
 Source0  : https://download.qgis.org/downloads/qgis-3.34.0.tar.bz2
 Summary  : No detailed summary available
