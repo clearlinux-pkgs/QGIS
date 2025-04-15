@@ -1,6 +1,6 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-PyQt5
+PyQt6
 bison
 buildreq-kde
 expat-dev
@@ -14,10 +14,9 @@ libzip-dev
 opencl-headers-dev
 postgresql-dev
 proj-dev
-pypi(pyqt5_sip)
 pypi(pyqtbuild)
 python3-dev
-qca-qt5-dev
+qca-dev
 qscintilla
 qscintilla-dev
 qtkeychain-dev
