@@ -6,10 +6,10 @@
 # autospec commit: a88ffdc
 #
 Name     : QGIS
-Version  : 3.42.1
-Release  : 66
-URL      : https://download.qgis.org/downloads/qgis-3.42.1.tar.bz2
-Source0  : https://download.qgis.org/downloads/qgis-3.42.1.tar.bz2
+Version  : 3.42.2
+Release  : 67
+URL      : https://download.qgis.org/downloads/qgis-3.42.2.tar.bz2
+Source0  : https://download.qgis.org/downloads/qgis-3.42.2.tar.bz2
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-1.1 Apache-2.0 BSD-2-Clause BSD-3-Clause BSL-1.0 CC-BY-SA-3.0 GFDL-1.1 GPL-2.0 GPL-3.0 HPND ISC LGPL-2.1 LGPL-3.0 MIT OFL-1.0
@@ -127,15 +127,15 @@ license components for the QGIS package.
 
 
 %prep
-%setup -q -n qgis-3.42.1
-cd %{_builddir}/qgis-3.42.1
+%setup -q -n qgis-3.42.2
+cd %{_builddir}/qgis-3.42.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1744675977
+export SOURCE_DATE_EPOCH=1744992785
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -170,7 +170,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1744675977
+export SOURCE_DATE_EPOCH=1744992785
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/qgis-%{version}/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :
@@ -1472,9 +1472,12 @@ popd
 /usr/share/qgis/i18n/qgis_cs.qm
 /usr/share/qgis/i18n/qgis_da.qm
 /usr/share/qgis/i18n/qgis_de.qm
+/usr/share/qgis/i18n/qgis_el.qm
 /usr/share/qgis/i18n/qgis_en_US.qm
 /usr/share/qgis/i18n/qgis_es.qm
+/usr/share/qgis/i18n/qgis_et.qm
 /usr/share/qgis/i18n/qgis_eu.qm
+/usr/share/qgis/i18n/qgis_fa.qm
 /usr/share/qgis/i18n/qgis_fi.qm
 /usr/share/qgis/i18n/qgis_fr.qm
 /usr/share/qgis/i18n/qgis_gl.qm
@@ -1483,7 +1486,9 @@ popd
 /usr/share/qgis/i18n/qgis_it.qm
 /usr/share/qgis/i18n/qgis_ja.qm
 /usr/share/qgis/i18n/qgis_ko.qm
+/usr/share/qgis/i18n/qgis_ky.qm
 /usr/share/qgis/i18n/qgis_lt.qm
+/usr/share/qgis/i18n/qgis_lv.qm
 /usr/share/qgis/i18n/qgis_nb.qm
 /usr/share/qgis/i18n/qgis_nl.qm
 /usr/share/qgis/i18n/qgis_pl.qm
@@ -10545,14 +10550,14 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libqgis_3d.so.3.42.1
-/usr/lib64/libqgis_analysis.so.3.42.1
-/usr/lib64/libqgis_app.so.3.42.1
-/usr/lib64/libqgis_core.so.3.42.1
-/usr/lib64/libqgis_gui.so.3.42.1
-/usr/lib64/libqgis_native.so.3.42.1
-/usr/lib64/libqgisgrass8.so.3.42.1
-/usr/lib64/libqgispython.so.3.42.1
+/usr/lib64/libqgis_3d.so.3.42.2
+/usr/lib64/libqgis_analysis.so.3.42.2
+/usr/lib64/libqgis_app.so.3.42.2
+/usr/lib64/libqgis_core.so.3.42.2
+/usr/lib64/libqgis_gui.so.3.42.2
+/usr/lib64/libqgis_native.so.3.42.2
+/usr/lib64/libqgisgrass8.so.3.42.2
+/usr/lib64/libqgispython.so.3.42.2
 /usr/lib64/qgis/plugins/libauthmethod_apiheader.so
 /usr/lib64/qgis/plugins/libauthmethod_awss3.so
 /usr/lib64/qgis/plugins/libauthmethod_basic.so
