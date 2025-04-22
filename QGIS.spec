@@ -7,7 +7,7 @@
 #
 Name     : QGIS
 Version  : 3.42.2
-Release  : 67
+Release  : 68
 URL      : https://download.qgis.org/downloads/qgis-3.42.2.tar.bz2
 Source0  : https://download.qgis.org/downloads/qgis-3.42.2.tar.bz2
 Summary  : No detailed summary available
