@@ -7,7 +7,7 @@
 #
 Name     : QGIS
 Version  : 3.42.3
-Release  : 69
+Release  : 70
 URL      : https://download.qgis.org/downloads/qgis-3.42.3.tar.bz2
 Source0  : https://download.qgis.org/downloads/qgis-3.42.3.tar.bz2
 Summary  : No detailed summary available
@@ -73,9 +73,8 @@ BuildRequires : zstd-dev
 %define debug_package %{nil}
 
 %description
-QOCISPATIAL driver derived from QOCI driver.
-You will need the Oracle development headers and libraries installed
-before compiling this plugin.
+This was originally taken from http://nmea.sourceforge.net, which is now dead.
+A fork is alive and well at https://gitlab.com/fhuberts/nmealib, however in the meantime we've diverged considerably and pulling in the changes from the fork is not trivial. Still, the new upstream makes a good reference when working here or checking on bugs!
 
 %package bin
 Summary: bin components for the QGIS package.
@@ -135,7 +134,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1747410383
+export SOURCE_DATE_EPOCH=1747428832
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -170,7 +169,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1747410383
+export SOURCE_DATE_EPOCH=1747428832
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/QGIS
 cp %{_builddir}/qgis-%{version}/COPYING %{buildroot}/usr/share/package-licenses/QGIS/488f92ccc409b986e91982e0a865f96a6392920f || :
